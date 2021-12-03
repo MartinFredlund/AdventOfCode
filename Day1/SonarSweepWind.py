@@ -8,7 +8,7 @@ file = open('input.txt', 'r')
 value = [0,0,0,0]
 amount = 0
 
-for x in range(1, 3):
+for x in range(1, 4):
     value[x] = int (file.readline())
 
 for line in file:
