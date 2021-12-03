@@ -5,13 +5,13 @@ public class SonarSweepWind {
         int value[] = {0,0,0,0};
         int amount = 0;
         try {
-            Scanner sc = new Scanner(new File("input2.txt"));
+            Scanner sc = new Scanner(new File("input3.txt"));
             for(int i = 1; i < 3; i++){
                 value[i] = sc.nextInt();
             }
             while(sc.hasNext()){
                 value = nextValue(sc, value);
-                if(value[0] + value[1] + value[2] < value[1] + value[2] + value[3]){
+                if(value[0] < value[3]){
                     amount++;
                 }
             }
