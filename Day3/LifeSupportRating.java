@@ -10,18 +10,14 @@ public class LifeSupportRating {
         ArrayList co2 = new ArrayList<String>();
         while(sc.hasNextLine()){
             String temp = sc.nextLine();
-            if(temp.charAt(0) == '1'){
-                oxygen.add(temp);
-            }else{
-                co2.add(temp);
-            }
+            if(temp.charAt(0) == '1' ?  oxygen.add(temp) : co2.add(temp));
         }
         if(!(oxygen.size() > co2.size())){
             ArrayList temp = oxygen;
             oxygen = co2;
             co2 = temp;
         }
-        System.out.println(value(oxygen, true)* value(co2, false));
+        System.out.println(value(oxygen, true) * value(co2, false));
     }
 
     private static int value(ArrayList<String> input, Boolean mostCommon){
@@ -30,28 +26,13 @@ public class LifeSupportRating {
         ArrayList listWithZero = new ArrayList<String>();
         while(input.size() != 1){
             for (String line : input) {
-                if(line.charAt(pos) == '1'){
-                    listWithOne.add(line);
-                }
-                else{
-                    listWithZero.add(line);
-                }
+                if(line.charAt(pos) == '1' ? listWithOne.add(line) : listWithZero.add(line));            
             }
             input.clear();
             if(mostCommon){
-                if(listWithOne.size() >= listWithZero.size()){
-                    input.addAll(listWithOne);
-                }
-                else{
-                    input.addAll(listWithZero);
-                }
+                if(listWithOne.size() >= listWithZero.size() ? input.addAll(listWithOne) : input.addAll(listWithZero));
             }else{
-                if(listWithOne.size() < listWithZero.size()){
-                    input.addAll(listWithOne);
-                }
-                else{
-                    input.addAll(listWithZero);
-                }
+                if(listWithOne.size() < listWithZero.size() ? input.addAll(listWithOne) : input.addAll(listWithZero));
             }
             listWithOne.clear();
             listWithZero.clear();
