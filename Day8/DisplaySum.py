@@ -1,10 +1,3 @@
-def checkValue(seq):
-    for i in range(0,10):
-        if(seq == input[i]):
-            return i
-    print("fail")        
-    return 0
-
 def sort(input):
     temp = ["","","","","","","","","",""]
     for seq in input:
@@ -61,7 +54,7 @@ for line in file:
     results = nextLine[1].split()
     for seq in results:
         seq = "".join(sorted(seq))
-        amount += str(checkValue(seq))
+        amount += str(input.index(seq))
     result += int( amount)
 
 print(result)
