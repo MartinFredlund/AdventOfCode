@@ -10,15 +10,6 @@ dist = []
 dNodes = []
 
 def Solve():
-    global coord
-    global grid
-    global dist
-    global dNodes
-    for i in range(len(grid)):
-        dist.append([sys.maxsize]*len(grid[0]))
-        dNodes.append([False]*len(grid[0]))
-    dist[start[0]][start[1]] = 0
-
     while True:
         min = sys.maxsize
         for y in range(len(grid)):
@@ -28,7 +19,7 @@ def Solve():
                     coord = (x, y)
 
         dNodes[coord[1]][coord[0]] = True
-        if(coord == end and coord[1] == end[0]):
+        if(coord[0] == end[1] and coord[1] == end[0]):
             print(dist[end[0]][end[1]])
             return
         rowLimit = len(grid)
@@ -46,8 +37,15 @@ def Solve():
             if(dist[coord[1]+1][coord[0]] > dist[coord[1]][coord[0]] + 1 and ord(grid[coord[1]][coord[0]]) + 1 >= ord(grid[coord[1]+1][coord[0]])):
                 dist[coord[1]+1][coord[0]] = dist[coord[1]][coord[0]] + 1
 
-for line in file:
-    grid.append(line.replace("S", "a").replace("E", "z").rstrip())
+def setUp():
+    for line in file:
+        grid.append(line.replace("S", "a").replace("E", "z").rstrip())
+    for i in range(len(grid)):
+        dist.append([sys.maxsize]*len(grid[0]))
+        dNodes.append([False]*len(grid[0]))
+    dist[start[0]][start[1]] = 0
+
+setUp()
 Solve()
 stop = timeit.default_timer()
 print('Time: ', stop - startTime) 
