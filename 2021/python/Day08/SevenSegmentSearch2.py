@@ -1,5 +1,5 @@
 def decode_segments(segInput):
-    decodeList = [""]*10
+    decodeList = [""] * 10
     for seg in sorted(segInput, key=lambda x: (len(x), sorted(x))):
         match len(seg):
             case 2:
@@ -27,7 +27,7 @@ def decode_segments(segInput):
     return decodeList
 
 
-file = open("input.txt","r")
+file = open("input.txt", "r")
 result = 0
 for l in file:
     parts = l.split("|")
@@ -37,7 +37,7 @@ for l in file:
     value = ""
     for dig in digits:
         for index, decoded_digit in enumerate(nmbDecoded):
-            if(set(dig) == set(decoded_digit)):
+            if set(dig) == set(decoded_digit):
                 value += str(index)
                 break
 

@@ -1,6 +1,7 @@
 BOARD_SIZE = 5
 
-def check_win(board,x,y):
+
+def check_win(board, x, y):
 
     # Check rows and columns for a win
     amountX = 0
@@ -10,7 +11,7 @@ def check_win(board,x,y):
             amountX += 1
         if board[i][y] == "x":
             amountY += 1
-    return (amountX == BOARD_SIZE or amountY == BOARD_SIZE)
+    return amountX == BOARD_SIZE or amountY == BOARD_SIZE
 
 
 def board_score(board, last_number):
@@ -20,6 +21,7 @@ def board_score(board, last_number):
             if board[x][y] != "x":
                 boardSum += int(board[x][y])
     return boardSum * int(last_number)
+
 
 def parse_boards(file):
     boards = []
@@ -35,6 +37,7 @@ def parse_boards(file):
             boards.append(board)
     return boards
 
+
 def play_bingo(draw_numbers, boards):
     for n in draw_numbers:
         for board in boards[:]:
@@ -42,18 +45,20 @@ def play_bingo(draw_numbers, boards):
                 for y in range(BOARD_SIZE):
                     if board[x][y] == n:
                         board[x][y] = "x"
-                        if check_win(board,x,y):
-                            if(len(boards) > 1):
+                        if check_win(board, x, y):
+                            if len(boards) > 1:
                                 boards.remove(board)
                             else:
                                 print(board_score(board, n))
                                 return
 
+
 def main():
-    with open('input.txt', 'r') as file:
+    with open("input.txt", "r") as file:
         draw_numbers = file.readline().strip().split(",")
         boards = parse_boards(file)
     play_bingo(draw_numbers, boards)
+
 
 if __name__ == "__main__":
     main()

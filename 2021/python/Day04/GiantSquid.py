@@ -7,17 +7,18 @@ def check(board, x, y, n):
             amountX += 1
         if board[i][y] == "x":
             amountY += 1
-    
+
     if amountX == 5 or amountY == 5:
         for x in range(5):
             for y in range(5):
                 if board[x][y] != "x":
                     boardSum += int(board[x][y])
-        print(boardSum * int(n))    
+        print(boardSum * int(n))
         exit()
 
+
 boards = []
-file = open('input.txt', 'r')
+file = open("input.txt", "r")
 drawNumber = file.readline().strip().split(",")
 while True:
     line = file.readline()
@@ -38,4 +39,3 @@ for n in drawNumber:
                 if b[x][y] == n:
                     b[x][y] = "x"
                     check(b, x, y, n)
-
