@@ -1,31 +1,31 @@
+def extender(times, charList, translator):
+    newInput = charList[0]
+    for x in range(1, len(charList)):
+        searchWord = charList[x - 1] + charList[x]
+        newInput += translator.get(searchWord)
+        newInput += charList[x]
+    times -= 1
+    if times != 0:
+        extender(times, newInput, translator)
+    return newInput
+
+
 file = open("input.txt", "r")
-input = ""
-input =  file.readline().strip("\n")
+input = file.readline().strip("\n")
 extend = dict()
-print(input)
 for line in file:
     next = line.strip("\n").split(" -> ")
-    if(len(next) == 2):
+    if len(next) == 2:
         extend[next[0]] = next[1]
-print(extend)
-loops = 10
-for i in range(0,loops):
-    newInput = input[0]
-    for x in range(1, len(input)):
-        searchWord = input[x-1] + input[x]
-        newInput += extend.get(searchWord)
-        newInput += input[x]
-        #print(input[x])
-    input = newInput
+
+result = extender(10, input, extend)
 values = list(set(extend.values()))
 maxL = 0
-minL = 10000
+minL = max(int)
 for val in values:
     count = input.count(val)
-    print(val, count)
-    if(count > maxL):
+    if count > maxL:
         maxL = count
-    elif(count < minL):
+    elif count < minL:
         minL = count
 print(maxL - minL)
-print(len(input))
