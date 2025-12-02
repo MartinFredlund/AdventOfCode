@@ -9,8 +9,8 @@ for turn in file:
         current_value -= amount
     else:
         current_value += amount
-    
-    #Check if 0
-    if current_value%100 == 0:
+
+    # Check if 0
+    if current_value % 100 == 0:
         zeros += 1
 print(zeros)
