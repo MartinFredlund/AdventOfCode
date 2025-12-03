@@ -1,4 +1,4 @@
-file =  open("input.txt")
+file = open("input.txt")
 
 current_value = 50
 score = 0
@@ -19,7 +19,7 @@ for row in file:
     # Add 1 if we land on 0 while moving left
     if current_value == 0 and step < 0:
         crossings += 1
-    
+
     score += crossings
-    
+
 print(score)
